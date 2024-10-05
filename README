@@ -12,7 +12,9 @@
 Originally Named "Lariza", This is a continuation hard fork.
       https://uninformativ.de/git/lariza
       https://uninformativ.de/bugs.html
-      
+
+If you want to see the browser in action check out the desktop_busy.png file
+
 A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
 
 Features:
