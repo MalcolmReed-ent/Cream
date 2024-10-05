@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=cream
+GenericName=Web Browser
+Comment=A minimalist and web browser
+Exec=cream %U
+Terminal=false
+Version=1.0
+Type=Application
+Categories=GTK;Network;WebBrowser;
+Icon=cream.png
+Keywords=Internet;WWW;Browser;Web;WebKit;WebKitGTK
+MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;

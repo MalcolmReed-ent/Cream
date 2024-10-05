@@ -1,0 +1,299 @@
+.TH CREAM 1 cream\-VERSION
+.SH NAME
+cream \- simple webkit-based browser
+.SH SYNOPSIS
+.B cream
+[\fB\-C\fP]
+[\fIURI ...\fP]
+.SH DESCRIPTION
+cream is a simple Web browser based on WebKit/GTK+. It is able
+to display websites and follow links. It supports tabbed browsing and
+various keyboard shortcuts for efficient navigation.
+
+Features include:
+.IP \[bu] 2
+A WebKit2 viewport
+.IP \[bu]
+An input box to change the URI or to search the current page
+.IP \[bu]
+Built-in download manager
+.IP \[bu]
+Indicator for web feeds
+.IP \[bu]
+Optimized hotkeys: Left hand on keyboard, right hand on mouse
+.IP \[bu]
+Global content zoom
+.IP \[bu]
+Cooperative instances using FIFOs
+.IP \[bu]
+Certificate trust store
+.IP \[bu]
+Built-in user-supplied JavaScripts (e.g., Link hints)
+.IP \[bu]
+Bundled web extensions (optional, e.g., Adblock)
+
+.SH OPTIONS
+In addition to the standard arguments of GTK+ 3, \fBcream\fP knows
+about the following options:
+.TP
+\fB\-C\fP
+Disables cooperative instances.
+.P
+After these options there can be any number of URIs. If no URIs are
+given, $\fBCREAM_HOME_URI\fP will be opened.
+
+.SH USAGE
+.SS Default Global Hotkeys
+.TP
+.B Ctrl+W
+Close current tab
+.TP
+.B Ctrl+T
+Open new tab
+.TP
+.B Ctrl+Shift+T
+Reopen closed tabs (up to 10)
+.TP
+.B Alt+H
+Go to home page
+.TP
+.B Ctrl+R
+Refresh/Reload current page
+.TP
+.B Ctrl+F
+Activate link hints (open in new tab)
+.TP
+.B Ctrl+L
+Focus on search bar
+.TP
+.B Alt+K
+Perform bar search
+.TP
+.B Alt+C
+Reload certificates
+.TP
+.B Ctrl+PageUp
+Switch to next tab
+.TP
+.B Ctrl+PageDown
+Switch to previous tab
+.TP
+.B Shift+K
+Scroll up (Vim-style)
+.TP
+.B Shift+J
+Scroll down (Vim-style)
+.TP
+.B Shift+H
+Go back in history (Vim-style)
+.TP
+.B Shift+L
+Go forward in history (Vim-style)
+.TP
+.B Alt+#
+Select a specific tab (where # is the tab number)
+
+.SS Additional Global Hotkeys
+.TP
+.B Mod1+q
+Close the current window. Quits the entire program if this was the last
+window and if there are no more active downloads.
+.TP
+.B Mod1+e
+Open a new window.
+.TP
+.B Mod1+d
+Open the download manager.
+.TP
+.B Mod1+2 or Mod1+n
+Repeat the last search (forward).
+.TP
+.B Mod1+3
+Repeat the last search (backward).
+.TP
+.B F2 / F3
+Go backward and forward in current browser history.
+
+.SS WebKit Viewport Focused
+.TP
+.B Escape
+Stop loading current page
+.TP
+.B Middle mouse button
+Open link in new window
+.TP
+.B Mouse backward/forward
+Navigate back/forward in history
+.TP
+.B Alt+Scroll up or Ctrl+Scroll up
+Increase zoom level
+.TP
+.B Alt+Scroll down or Ctrl+Scroll down
+Decrease zoom level
+.TP
+.B Alt+Scroll horizontally or Ctrl+Scroll horizontally
+Reset zoom level
+.TP
+.B Ctrl+Click
+Open link in new tab
+.TP
+.B Backward / forward (mouse keys 8 and 9)
+Same as \fBF2\fP and \fBF3\fP
+
+.SS Location Bar Focused
+.TP
+.B Escape
+Reset location bar content to current URI
+.TP
+.B Return
+Commit (search or open URI)
+
+.SS Download Manager
+.TP
+.B Ctrl+J
+Open or close download manager GTK widget
+.TP
+.B Mod1+d or Mod1+q
+Close the download manager. Active downloads are never aborted.
+
+.SS User Scripts
+.TP
+.B f
+Activate link hints (open in current window)
+.TP
+.B F
+Activate link hints (open in new window)
+.TP
+.B Enter
+Confirm link hint
+.TP
+.B Escape
+Abort link hint
+
+.SH ENVIRONMENT
+.TP
+.B CREAM_ACCEPTED_LANGUAGE
+In HTTP requests, WebKit sets the \(lqAccepted-Language\(rq header to
+this value. Defaults to \fBen-US\fP.
+.TP
+.B CREAM_DISABLE_SMOOTH_SCROLLING
+When set, smooth scrolling will be disabled.
+.TP
+.B CREAM_DOWNLOAD_DIR
+All downloads are automatically stored in this directory. Defaults to \fB/var/tmp\fP.
+.TP
+.B CREAM_ENABLE_CONSOLE_TO_STDOUT
+Enable writing WebKit console messages to stdout.
+.TP
+.B CREAM_FIFO_SUFFIX
+Suffix for the named pipe used by cooperative instances. Defaults to \fBmain\fP.
+.TP
+.B CREAM_HISTORY_FILE
+If set, \fBcream\fP will write each visited URI to that file.
+.TP
+.B CREAM_HOME_URI
+This URI will be opened by pressing the appropriate hotkeys. Defaults to \fBabout:blank\fP.
+.TP
+.B CREAM_TAB_POS
+Can be one of \fBtop\fP (default), \fBright\fP, \fBbottom\fP, \fBleft\fP.
+.TP
+.B CREAM_TAB_WIDTH_CHARS
+An integer, determines width of tabs. Defaults to 20.
+.TP
+.B CREAM_USER_AGENT
+\fBCREAM\fP will identify itself with this string. Uses WebKit's default value if unset.
+.TP
+.B CREAM_ZOOM
+Zoom level for WebKit viewports. Defaults to \fB1.0\fP.
+.TP
+.B http_proxy
+If this variable is set and not empty upon startup, cream will use it as the http proxy.
+
+.SH FILES
+.TP
+.B ~/.config/cream/config.h
+Per-user configuration file. See cream(5) for further details.
+.TP
+.B ~/.config/cream/adblock
+Adblock patterns file.
+.TP
+.B ~/.config/cream/certs
+Directory where trusted certificates are stored.
+.TP
+.B ~/.config/cream/scripts
+Directory to store user-supplied JavaScript snippets.
+.TP
+.B ~/.local/share/cream/web_extensions
+Directory where WebKit will look for web extensions.
+.TP
+.B ~/.cache/cream, ~/.cache/webkitgtk, ~/.local/share/webkitgtk
+WebKitGTK cache and local storage directories.
+
+.SH CUSTOMIZATION
+cream is customized by creating a custom config.h and (re)compiling the source
+code. This keeps it fast, secure and simple.
+
+.SH PERFORMANCE
+When cream is active with an 'about:blank' page, it consumes approximately 170MB of RAM.
+Settings in config.h can make this number larger or smaller. Test and run to suit your preference.
+
+.SH "USER-SUPPLIED JAVASCRIPT FILES"
+After a page has been successfully loaded, the directory
+\fI~/.config/cream/scripts\fP will be scanned and each file in
+it ending with \fB.js\fP will be run as a JavaScript file in the context
+of said page.
+
+cream comes with the following scripts:
+.TP
+.B hints.js
+Provides link hinting functionality.
+
+.SH "WEB EXTENSIONS"
+On startup, WebKit checks \fI~/.local/share/cream/web_extensions\fP for any
+\fB.so\fP files. cream comes with the following extensions:
+.TP
+.B we_adblock.so
+Generic adblock. Reads patterns from the file \fI~/.config/cream/adblock\fP.
+
+.SH "TRUSTED CERTIFICATES"
+You can add trusted certificates to the directory \fI~/.config/cream/certs\fP.
+The filename must be equal to the hostname. For example:
+
+.nf
+$ echo | openssl s_client -connect foo.de:443 | openssl x509 >foo.de
+.fi
+
+This tells cream to trust the given certificate when connecting to host \fBfoo.de\fP.
+
+You can reload these certificates at runtime by pressing the appropriate hotkey.
+Note that removed certificates will be kept in memory until you restart cream.
+
+.SH "DOWNLOAD MANAGER"
+Open the download manager using the appropriate hotkey. A new window
+listing your downloads will appear. Clicking on an item will remove it
+from the list and \(em if needed \(em cancel the download.
+
+There's no file manager integration, nor does cream delete,
+overwrite or resume downloads. If a file already exists, it won't be
+touched. Instead, the new file name will have a suffix such as \fB.1\fP,
+\fB.2\fP, \fB.3\fP, and so on.
+
+.SH SEE ALSO
+.BR webkit2gtk(7),
+.BR gtk3(7)
+
+.SH BUGS
+Please report them at https://github.com/malcolmreed-ent/cream/bugs.html
+
+.SH AUTHOR
+cream is a continuation hard fork of Lariza (https://uninformativ.de/git/lariza).
+Current maintainer: Malcolm Reed (https://github.com/malcolmreed-ent)
+
+.SH COPYRIGHT
+Copyright \(co 2024 Malcolm Reed. License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
+
+.SH HISTORY
+cream was originally written by Peter Hofmann as Lariza. The project
+was started in June 2014. It was forked from Lariza and renamed to Cream
+in September 2024, and is being actively maintained.

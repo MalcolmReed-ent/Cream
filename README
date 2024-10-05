@@ -1,0 +1,93 @@
+   ___ ___ ___   _   __  __ 
+  / __| _ \ __| /_\ |  \/  |
+ | (__|   / _| / _ \| |\/| |
+  \___|_|_\___/_/ \_\_|  |_|
+  https://github.com/malcolmreed-ent/cream
+  https://github.com/malcolmreed-ent/cream/bugs.html
+  
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+Originally Named "Lariza", This is a continuation hard fork.
+      https://uninformativ.de/git/lariza
+      https://uninformativ.de/bugs.html
+      
+A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
+
+Features:
+
+    - A WebKit2 viewport
+    - An input box to change the URI or to search the current page
+    - Built-in download manager
+    - Indicator for web feeds
+    - Optimized hotkeys: Left hand on keyboard, right hand on mouse
+    - Global content zoom
+    - Cooperative instances using FIFOs
+    - Certificate trust store
+    - Built in user-supplied JavaScripts:
+        - Link hints
+
+
+Installation
+------------
+
+The following C libraries are required:
+
+    - GTK+ 3
+    - WebKit2 API for GTK+ 3
+
+Debian Trixie/Sid
+	- libwebkit2gtk-4.1-dev
+	
+cream expects to be run on a POSIX-ish operating system.
+
+To build the program and install it to /usr/local:
+
+    $ make
+	# sudo make clean install
+		
+To use bundled web extensions, they must be copied or symlinked to the
+appropriate path. Please refer to the manpage.
+
+
+Running
+-------
+
+You simply invoke the main program:
+
+    $ cream [URI]
+
+Refer to the manpage for all options.
+
+
+Background information
+----------------------
+
+ What cream is and what it's not
+
+  cream does what I need. It won't do other things. I'm open for pull
+  requests but please don't be upset if I turn them down -- which might
+  happen if it's a feature that I simply don't need. That being said,
+  you should have a look at the PATCHES file. :-)
+
+  cream does not compete with powerful browsers like vimb or luakit, 
+  nor with monstrous applications like Qutebrowser or Firefox or 
+  Chromium. cream won't have persistent storage, nor a plugin system, 
+  nor cloud sync, nor bookmarks.
+
+
+ About the name
+
+  "Cream: The Smoothness and Richness of a Browser" 
+
+  I selected the name because I am a huge admirer of the rock
+  supergroup CREAM (1966-1969), featuring Eric Clapton, Jack Bruce, and 
+  Ginger Baker. I picked this band because they are a supergroup, with
+  each member being a standout talent alongside two other legends. Thus 
+  them being the "Cream of The Crop" 
+  
+  This browser showcases three features, which are...
+  1. Smooth - Effortless as Clapton's riff and smooth as Bruce's bass
+  2. Simplicity – Sleek and compact outwardly, yet a powerhouse beneath.
+  3. Speed – Fast, it keeps you "So Glad" while you can truly "Feel Free".
